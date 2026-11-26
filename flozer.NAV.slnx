@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="flozer.NAV.PdfTools/flozer.NAV.PdfTools.csproj" Id="f2064fad-6005-4106-86a3-b3123b503a9c" />
+  <Project Path="flozer.NAV.ScriptRunner/flozer.NAV.ScriptRunner.csproj" Id="03b013fa-3702-4b7a-8451-b1fb22fd1d87" />
+  <Project Path="flozer.NAV.XmlTools/flozer.NAV.XmlTools.csproj" Id="0b52891f-a0d9-43e6-9b0f-9de385978de5" />
+  <Project Path="flozer.NAV.ZipHelper/flozer.NAV.ZipHelper.csproj" Id="2f4287c7-cf5f-4011-adc5-a30d3b84c21f" />
+</Solution>

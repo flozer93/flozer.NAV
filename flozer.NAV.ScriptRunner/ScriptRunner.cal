@@ -1,0 +1,31 @@
+OBJECT Codeunit 110273 SCF_ScriptRunner
+{
+  OBJECT-PROPERTIES
+  {
+    Date=18.12.23;
+    Time=16:13:21;
+    Modified=Yes;
+    Version List=SCF,ScriptRunner;
+  }
+  PROPERTIES
+  {
+    OnRun=BEGIN
+          END;
+
+  }
+  CODE
+  {
+
+    PROCEDURE ScriptRunner@1000000001(RunP@1000000001 : Text) ScriptRunnerR : Text;
+    VAR
+      ScriptRunnerL@1000000000 : DotNet "'ScriptRunner, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'.ScriptRunner.ScriptRunner";
+    BEGIN
+      ScriptRunnerL := ScriptRunnerL.ScriptRunner;
+      ScriptRunnerR := ScriptRunnerL.Run(RunP);
+    END;
+
+    BEGIN
+    END.
+  }
+}
+

@@ -1,0 +1,35 @@
+OBJECT Codeunit 50000 XmlToolsExample
+{
+  OBJECT-PROPERTIES
+  {
+    Date=15.04.26;
+    Time=00:00:00;
+    Version List=;
+  }
+  PROPERTIES
+  {
+    OnRun=BEGIN
+          END;
+
+  }
+  CODE
+  {
+
+    LOCAL PROCEDURE ChangeXmlFile(FileNameP : Text);
+    VAR
+      XmlToolsL@1000000001 : DotNet "'flozer.NAV.XmlTools, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'.flozer.NAV.XmlTools.XmlTools";
+    BEGIN
+      XmlToolsL := XmlToolsL.XmlTools;
+
+      IF XmlToolsL.EscapeXmlFileContent_b(FileNameP) THEN BEGIN
+        XmlToolsL.RenameInnerItems(FileNameP, '/head', 'payTermFull', 'item', 'textItem');
+        XmlToolsL.RenameInnerItems(FileNameP, '/items/item', 'text', 'item', 'textItem');
+        XmlToolsL.RenameInnerItems(FileNameP, '/items/item', 'scheds', 'item', 'textItem');
+      END;
+    END;
+
+    BEGIN
+    END.
+  }
+}
+
