@@ -5,7 +5,7 @@ using PdfSharp.Pdf.IO;
 
 namespace flozer.NAV.PdfTools
 {
-    public static class PdfTools
+    public class PdfTools
     {
         /// <summary>
         /// Adds a PDF background to the first page and another PDF background to all following pages.
@@ -70,6 +70,9 @@ namespace flozer.NAV.PdfTools
                     File.Delete(temporaryFileName);
             }
         }
+        public static int WatermarkSize { get; set; } = 72; //72em
+        public static int WatermarkTransparency { get; set; } = 40; //40%
+        public static int uRGB { get; set; } = 210; //Grey
 
         /// <summary>
         /// Adds a centered, translucent diagonal text watermark to every page of a PDF.
@@ -99,11 +102,13 @@ namespace flozer.NAV.PdfTools
                     //var font = new XFont("Caveat", 48, XFontStyle.Bold);
                     //var font = new XFont("Impact", 48, XFontStyle.Bold);
                     //var font = new XFont("Segoe Print", 48, XFontStyle.Bold);
-                    var font = new XFont("Segoe Print", 72, XFontStyle.Bold);
+                    //var font = new XFont("Segoe Print", 72, XFontStyle.Bold);
+                    var font = new XFont("Segoe Print", WatermarkSize, XFontStyle.Bold);
 
                     //var brush = new XSolidBrush(XColor.FromArgb(40, 128, 128, 128));
                     //var brush = new XSolidBrush(XColor.FromArgb(40, 255, 0, 0)); //Red
-                    var brush = new XSolidBrush(XColor.FromArgb(40, 210, 210, 210)); //Grey
+                    //var brush = new XSolidBrush(XColor.FromArgb(WatermarkTransparency, 210, 210, 210)); //Grey
+                    var brush = new XSolidBrush(XColor.FromArgb(WatermarkTransparency, uRGB, uRGB, uRGB)); //Grey
 
                     foreach (var page in document.Pages)
                     {

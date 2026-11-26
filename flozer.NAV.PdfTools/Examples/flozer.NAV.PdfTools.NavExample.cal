@@ -1,0 +1,46 @@
+OBJECT Codeunit 99804 flozer PdfFunctions
+{
+  OBJECT-PROPERTIES
+  {
+    Date=26.11.26;
+    Time=00:00:00;
+    Version List=;
+  }
+  PROPERTIES
+  {
+    OnRun=BEGIN
+          END;
+
+  }
+  CODE
+  {
+
+    PROCEDURE AddBackground_ToDocument@1000000002(OriginalDocFilePathP@1000000002 : Text;FirstPageOverlayFilePathP@1000000001 : Text;FollowingPageOverlayFilePathP@1000000000 : Text);
+    VAR
+      PdfToolsL@1000000003 : DotNet "'flozer.NAV.PdfTools, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'.flozer.NAV.PdfTools.PdfTools";
+    BEGIN
+      PdfToolsL.AddBackground(OriginalDocFilePathP,FirstPageOverlayFilePathP,FollowingPageOverlayFilePathP);
+    END;
+
+    PROCEDURE AddWatermark_ToDocument@1000000003(OriginalDocFilePathP@1000000002 : Text;WatermarkTextP@1000000001 : Text);
+    VAR
+      PdfToolsL@1000000003 : DotNet "'flozer.NAV.PdfTools, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'.flozer.NAV.PdfTools.PdfTools";
+    BEGIN
+      PdfToolsL.WatermarkSize(72);
+      PdfToolsL.WatermarkTransparency(40);
+      PdfToolsL.uRGB(210);
+      PdfToolsL.AddWatermark(OriginalDocFilePathP,WatermarkTextP);
+    END;
+
+    PROCEDURE AddFooterPdf_ToDocument@1000000004(OriginalDocFilePathP@1000000002 : Text;FooterFilePathP@1000000001 : Text);
+    VAR
+      PdfToolsL@1000000003 : DotNet "'flozer.NAV.PdfTools, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'.flozer.NAV.PdfTools.PdfTools";
+    BEGIN
+      PdfToolsL.AddFooter(OriginalDocFilePathP,FooterFilePathP);
+    END;
+
+    BEGIN
+    END.
+  }
+}
+
